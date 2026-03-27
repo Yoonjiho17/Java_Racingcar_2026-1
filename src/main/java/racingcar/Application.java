@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -21,6 +22,8 @@ public class Application {
 
         System.out.println("\n실행 결과");
         arrayList = startRacing(tokens, racingCounts, arrayList);
+
+        winner(tokens, arrayList);
     }
 
     public static ArrayList<Integer> startRacing(String[] tokens, int counts, ArrayList<Integer> arrayList) {
@@ -44,5 +47,21 @@ public class Application {
         }
 
         return arrayList;
+    }
+
+    public static void winner(String[] tokens, ArrayList<Integer> arrayList) {
+        int max = Collections.max(arrayList);
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i) == max) {
+                if (!sb.isEmpty()) {
+                    sb.append(", ");
+                }
+                sb.append(tokens[i]);
+            }
+        }
+
+        System.out.println("최종 우승자 : " + sb);
     }
 }
