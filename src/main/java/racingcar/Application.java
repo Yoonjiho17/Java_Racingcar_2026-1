@@ -1,36 +1,34 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
-import java.util.Scanner;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
         ArrayList<Integer> arrayList = new ArrayList<>(); // 전진상황 리스트
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carName = input.nextLine();
+        String carName = readLine();
         String[] tokens = carName.split(",");
 
-        try {
-            for (int i = 0; i < tokens.length; i++) {
-                if (tokens[i].length() > 5) {
-                    throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-                }
-                arrayList.add(0);
+        for (int i = 0; i < tokens.length; i++) {
+            if (tokens[i].length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
             }
-        } catch (IllegalArgumentException e) {
-            System.err.println("오류 발생: " + e.getMessage());
-            System.exit(0);
+            arrayList.add(0);
         }
 
         System.out.println("시도할 회수는 몇회인가요?");
-        int racingCounts = input.nextInt();
+        String racingCounts = readLine();
+        int counts = Integer.parseInt(racingCounts);
 
         System.out.println("\n실행 결과");
-        arrayList = startRacing(tokens, racingCounts, arrayList);
+        arrayList = startRacing(tokens, counts, arrayList);
 
         winner(tokens, arrayList);
     }
@@ -49,8 +47,7 @@ public class Application {
     }
 
     public static ArrayList<Integer> goOrStop(int index, ArrayList<Integer> arrayList) {
-        Random random = new Random();
-        int randomNum = random.nextInt(10);
+        int randomNum = pickNumberInRange(0,9);
         if (randomNum >= 4) {
             arrayList.set(index, arrayList.get(index) + 1);
         }
