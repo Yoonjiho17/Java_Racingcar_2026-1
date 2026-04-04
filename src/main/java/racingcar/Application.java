@@ -16,7 +16,6 @@ public class Application {
         String[] tokens = carName.split(",");
 
         equalNameException(tokens, uniqueElements); // 예외처리
-        eachNameException(tokens); // 예외처리
 
         Car[] cars = new Car[tokens.length];
         for (int i = 0; i < tokens.length; i++) {
@@ -50,23 +49,6 @@ public class Application {
 
         if (carName.endsWith(",")) {
             throw new IllegalArgumentException("마지막은 쉼표로 끝날 수 없습니다.");
-        }
-    }
-
-    public static void eachNameException(String[] tokens) {
-        if (tokens.length == 0) {
-            throw new IllegalArgumentException("자동차를 적어야합니다.");
-        }
-        for (int i = 0; i < tokens.length; i++) {
-            if (tokens[i].length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-            }
-            if (tokens[i].isBlank()) {
-                throw new IllegalArgumentException("자동차 이름을 적어야 합니다.");
-            }
-            if (tokens[i].contains(" ")) {
-                throw new IllegalArgumentException("자동차 이름에 공백은 불가능합니다.");
-            }
         }
     }
 
