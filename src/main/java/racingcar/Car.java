@@ -12,4 +12,12 @@ public class Car {
     public void move() {
         movement += 1;
     }
+
+    public String checkCarName() {
+        return carName;
+    }
+
+    public int checkMovement() {
+        return movement;
+    }
 }
