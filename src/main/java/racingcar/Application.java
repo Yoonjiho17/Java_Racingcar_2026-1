@@ -40,7 +40,7 @@ public class Application {
             System.out.println();
         }
 
-        view.winner(cars);
+        view.winnerView(cars);
     }
 
     public static void nameException(String carName) {
