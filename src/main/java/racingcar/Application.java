@@ -15,8 +15,8 @@ public class Application {
 
         String[] tokens = carName.split(",");
 
-        equalException(tokens, uniqueElements); // 예외처리
-        exception(tokens); // 예외처리
+        equalNameException(tokens, uniqueElements); // 예외처리
+        eachNameException(tokens); // 예외처리
 
         Car[] cars = new Car[tokens.length];
         for (int i = 0; i < tokens.length; i++) {
@@ -53,7 +53,7 @@ public class Application {
         }
     }
 
-    public static void exception(String[] tokens) {
+    public static void eachNameException(String[] tokens) {
         if (tokens.length == 0) {
             throw new IllegalArgumentException("자동차를 적어야합니다.");
         }
@@ -70,7 +70,7 @@ public class Application {
         }
     }
 
-    public static void equalException(String[] tokens, HashSet<String> uniqueElements) {
+    public static void equalNameException(String[] tokens, HashSet<String> uniqueElements) {
         for (String token : tokens) {
             if (!uniqueElements.add(token)) {
                 throw new IllegalArgumentException("자동차 이름이 중복됩니다.");
