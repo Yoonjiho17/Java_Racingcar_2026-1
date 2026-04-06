@@ -1,6 +1,6 @@
 package racingcar;
 
-public class View {
+public class OutputView {
 
     public void viewRacingCurrent(Car car) {
         System.out.println(car.checkCarName() + " : " + "-".repeat(car.checkMovement()));

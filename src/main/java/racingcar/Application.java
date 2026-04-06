@@ -30,7 +30,7 @@ public class Application {
         System.out.print('\n');
         System.out.println("실행 결과");
         Racing race = new Racing();
-        View view = new View();
+        OutputView view = new OutputView();
         for (int i = 0; i < counts; i++) {
             for (int j = 0; j < tokens.length; j++) {
                 race.goOrStop(cars[j]);
