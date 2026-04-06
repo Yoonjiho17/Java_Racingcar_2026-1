@@ -27,7 +27,7 @@ public class Application {
         int counts = validTryCountNum(racingCount); // 예외처리
         validTryCount(counts); // 예외처리
 
-        System.out.println();
+        System.out.print('\n');
         System.out.println("실행 결과");
         Racing race = new Racing();
         View view = new View();
@@ -36,7 +36,7 @@ public class Application {
                 race.goOrStop(cars[j]);
                 view.viewRacingCurrent(cars[j]);
             }
-            System.out.println();
+            System.out.print('\n');
         }
 
         view.viewWinner(cars);
