@@ -1,8 +1,10 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 
 public class Cars {
+    private static final int CAR_MOVE_STANDARD = 4;
 
     public static Car[] rappingCars(String[] tokens) {
         Car[] cars = new Car[tokens.length];
@@ -21,22 +23,29 @@ public class Cars {
         }
     }
 
+    public static void goOrStop(Car car) {
+        int randomNum = Randoms.pickNumberInRange(0, 9);
+        if (randomNum >= CAR_MOVE_STANDARD) {
+            car.move();
+        }
+    }
+
     public static StringBuilder calculateWinner(Car[] cars) {
         int max = cars[0].checkMovement();
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < cars.length; i++) {
-            if (max < cars[i].checkMovement()) {
-                max = cars[i].checkMovement();
+        for (Car car : cars) {
+            if (max < car.checkMovement()) {
+                max = car.checkMovement();
             }
         }
 
-        for (int j = 0; j < cars.length; j++) {
-            if (cars[j].checkMovement() == max) {
-                if (sb.length() > 0) {
+        for (Car car : cars) {
+            if (car.checkMovement() == max) {
+                if (!sb.isEmpty()) {
                     sb.append(", ");
                 }
-                sb.append(cars[j].checkCarName());
+                sb.append(car.checkCarName());
             }
         }
 
