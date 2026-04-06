@@ -22,18 +22,10 @@ public class Application {
         int counts = validTryCountNum(racingCount); // 예외처리
         validTryCount(counts); // 예외처리
 
-        System.out.print('\n');
-        System.out.println("실행 결과");
         Racing race = new Racing();
-        OutputView view = new OutputView();
-        for (int i = 0; i < counts; i++) {
-            for (int j = 0; j < tokens.length; j++) {
-                race.goOrStop(cars[j]);
-                view.viewRacingCurrent(cars[j]);
-            }
-            System.out.print('\n');
-        }
+        OutputView.viewStartResult(tokens, counts, cars, race);
 
+        OutputView view = new OutputView();
         view.viewWinner(cars);
     }
 

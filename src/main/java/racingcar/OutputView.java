@@ -2,8 +2,16 @@ package racingcar;
 
 public class OutputView {
 
-    public void viewRacingCurrent(Car car) {
-        System.out.println(car.checkCarName() + " : " + "-".repeat(car.checkMovement()));
+    public static void viewStartResult(String[] tokens, int counts, Car[] cars, Racing race) {
+        System.out.print('\n');
+        System.out.println("실행 결과");
+        for (int i = 0; i < counts; i++) {
+            for (int j = 0; j < tokens.length; j++) {
+                race.goOrStop(cars[j]);
+                System.out.println(cars[j].checkCarName() + " : " + "-".repeat(cars[j].checkMovement()));
+            }
+            System.out.print('\n');
+        }
     }
 
     public void viewWinner(Car[] cars) {
