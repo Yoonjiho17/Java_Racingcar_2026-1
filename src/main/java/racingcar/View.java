@@ -7,6 +7,6 @@ public class View {
     }
 
     public void viewWinner(Car[] cars) {
-        System.out.println("최종 우승자 : " + Winner.calculateWinner(cars));
+        System.out.println("최종 우승자 : " + Cars.calculateWinner(cars));
     }
 }

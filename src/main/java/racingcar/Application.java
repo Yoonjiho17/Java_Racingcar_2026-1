@@ -15,7 +15,7 @@ public class Application {
 
         String[] tokens = carName.split(",");
 
-        validEqualName(tokens, uniqueElements); // 예외처리
+        Cars.validEqualName(tokens, uniqueElements); // 예외처리
 
         Car[] cars = new Car[tokens.length];
         for (int i = 0; i < tokens.length; i++) {
@@ -49,14 +49,6 @@ public class Application {
 
         if (carName.endsWith(",")) {
             throw new IllegalArgumentException("마지막은 쉼표로 끝날 수 없습니다.");
-        }
-    }
-
-    public static void validEqualName(String[] tokens, HashSet<String> uniqueElements) {
-        for (String token : tokens) {
-            if (!uniqueElements.add(token)) {
-                throw new IllegalArgumentException("자동차 이름이 중복됩니다.");
-            }
         }
     }
 
