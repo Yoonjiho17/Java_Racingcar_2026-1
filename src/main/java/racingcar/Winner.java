@@ -2,7 +2,7 @@ package racingcar;
 
 public class Winner {
 
-    public static StringBuilder winner(Car[] cars) {
+    public static StringBuilder calculateWinner(Car[] cars) {
         int max = cars[0].checkMovement();
         StringBuilder sb = new StringBuilder();
 

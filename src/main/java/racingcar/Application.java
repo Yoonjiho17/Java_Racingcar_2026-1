@@ -11,11 +11,11 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carName = readLine();
 
-        nameException(carName); // 예외처리
+        validCarName(carName); // 예외처리
 
         String[] tokens = carName.split(",");
 
-        equalNameException(tokens, uniqueElements); // 예외처리
+        validEqualName(tokens, uniqueElements); // 예외처리
 
         Car[] cars = new Car[tokens.length];
         for (int i = 0; i < tokens.length; i++) {
@@ -24,8 +24,8 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String racingCount = readLine();
-        int counts = tryCountNumCheckException(racingCount); // 예외처리
-        tryCountException(counts); // 예외처리
+        int counts = validTryCountNum(racingCount); // 예외처리
+        validTryCount(counts); // 예외처리
 
         System.out.println();
         System.out.println("실행 결과");
@@ -33,16 +33,16 @@ public class Application {
         View view = new View();
         for (int i = 0; i < counts; i++) {
             for (int j = 0; j < tokens.length; j++) {
-                race.goOrStrop(cars[j]);
-                view.racingCurrentView(cars[j]);
+                race.goOrStop(cars[j]);
+                view.viewRacingCurrent(cars[j]);
             }
             System.out.println();
         }
 
-        view.winnerView(cars);
+        view.viewWinner(cars);
     }
 
-    public static void nameException(String carName) {
+    public static void validCarName(String carName) {
         if (carName == null || carName.isBlank()) {
             throw new IllegalArgumentException("이름을 입력하지 않았습니다.");
         }
@@ -52,7 +52,7 @@ public class Application {
         }
     }
 
-    public static void equalNameException(String[] tokens, HashSet<String> uniqueElements) {
+    public static void validEqualName(String[] tokens, HashSet<String> uniqueElements) {
         for (String token : tokens) {
             if (!uniqueElements.add(token)) {
                 throw new IllegalArgumentException("자동차 이름이 중복됩니다.");
@@ -60,13 +60,13 @@ public class Application {
         }
     }
 
-    public static void tryCountException(int counts) {
+    public static void validTryCount(int counts) {
         if (counts < 1) {
             throw new IllegalArgumentException("시도 횟수는 0보다 커야합니다.");
         }
     }
 
-    public static int tryCountNumCheckException(String racingCount) {
+    public static int validTryCountNum(String racingCount) {
         try {
             int box = Integer.parseInt(racingCount);
             return box;
