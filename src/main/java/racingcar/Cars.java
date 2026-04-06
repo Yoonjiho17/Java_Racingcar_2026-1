@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 public class Cars {
 
-    public Car[] rappingCars(String[] tokens) {
+    public static Car[] rappingCars(String[] tokens) {
         Car[] cars = new Car[tokens.length];
         for (int i = 0; i < tokens.length; i++) {
             cars[i] = new Car(tokens[i]);

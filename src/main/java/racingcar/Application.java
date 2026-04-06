@@ -16,10 +16,7 @@ public class Application {
 
         Cars.validEqualName(tokens, uniqueElements); // 예외처리
 
-        Car[] cars = new Car[tokens.length];
-        for (int i = 0; i < tokens.length; i++) {
-            cars[i] = new Car(tokens[i]);
-        }
+        Car[] cars = Cars.rappingCars(tokens);
 
         String racingCount = InputView.getTryCount();
         int counts = validTryCountNum(racingCount); // 예외처리
