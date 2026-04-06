@@ -8,8 +8,7 @@ public class Application {
     public static void main(String[] args) {
         HashSet<String> uniqueElements = new HashSet<>();
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carName = readLine();
+        String carName = InputView.getCarName();
 
         validCarName(carName); // 예외처리
 
@@ -22,8 +21,7 @@ public class Application {
             cars[i] = new Car(tokens[i]);
         }
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String racingCount = readLine();
+        String racingCount = InputView.getTryCount();
         int counts = validTryCountNum(racingCount); // 예외처리
         validTryCount(counts); // 예외처리
 
